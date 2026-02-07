@@ -80,14 +80,14 @@
   <div class="card active" id="s1">
     <span class="badge">Confidential</span>
     <h1>Patient Case File</h1>
-    <p><strong>Patient:</strong> One (1) very lucky guy<br><strong>Attending:</strong> Dr. Shweta Sarthy</p>
+    <p><strong>Patient:</strong> One (1) very Lucky Guy<br><strong>Attending:</strong> Dr. Mannyaa J Shah</p>
     <button onclick="next('s2')">Open Case 📂</button>
   </div>
 
   <div class="card" id="s2">
     <span class="badge">Chief Complaint</span>
     <h1>Symptoms</h1>
-    <p>Patient reports "persistent warmth in chest" and "smiling for no reason" whenever he thinks of you.</p>
+    <p>Patient reports "Persistent warmth in chest" and "Smiling for no reason" whenever he thinks of you. Lately, He is dying to embrace you and His eyes long for you🥹</p>
     <button onclick="next('s3')">Check Diagnosis 🩺</button>
   </div>
 
@@ -96,6 +96,7 @@
     <h1>Diagnosis</h1>
     <ul>
       <li>Condition is chronic ❤️</li>
+      <li>Needs loads of Kisses😘</li>
       <li>Patient feels safe with you</li>
       <li>Highly contagious happiness</li>
     </ul>
@@ -105,7 +106,7 @@
   <div class="card" id="s4">
     <span class="badge">Treatment Plan</span>
     <h1>Prescription</h1>
-    <p>1. Proceed with Valentine's Day.<br>2. Eat good food.<br>3. Laugh a lot.</p>
+    <p>1. Proceed with Valentine's Day.<br>2. Eat good food.<br>3. Laugh a lot.<br>4. Always stay by his side</p>
     <p style="color:#d6334f; font-weight:bold;">Will you be my Valentine?</p>
     <button onclick="next('s6')">Yes, Accept! 💌</button>
     <button class="secondary" onclick="next('s5')">No (Reject) ❌</button>
@@ -119,10 +120,10 @@
   </div>
 
   <div class="card" id="s6">
-    <span class="badge" style="color:green; border-color:green;">Success</span>
+    <span class="badge" style="color:green; border-color:green;">Yayyyy</span>
     <h1>Case Closed!</h1>
-    <div class="emoji-big">🎉</div>
-    <p>See you on Valentine's Day!<br>Dr. Shweta approved.</p>
+    <div class="emoji-big">🎉🎉</div>
+    <p>See you on Valentine's Day!<br>(Kiss & suffocate with your embrace<br>Dr. Mannyaa approved.</p>
     <button id="whatsappBtn">Reply on WhatsApp 💬</button>
   </div>
 
