@@ -87,7 +87,7 @@
   <div class="card" id="s2">
     <span class="badge">Chief Complaint</span>
     <h1>Symptoms</h1>
-    <p>Patient reports "Persistent warmth in chest" and "Smiling for no reason" whenever he thinks of you. Lately, He is dying to embrace you and His eyes long for you🥹</p>
+    <p>Patient reports "Persistent warmth in chest" and "Smiling for no reason" whenever he thinks of you.<br>Lately, He is dying to embrace you and His eyes long for you🥹</p>
     <button onclick="next('s3')">Check Diagnosis 🩺</button>
   </div>
 
@@ -123,7 +123,7 @@
     <span class="badge" style="color:green; border-color:green;">Yayyyy</span>
     <h1>Case Closed!</h1>
     <div class="emoji-big">🎉🎉</div>
-    <p>See you on Valentine's Day!<br>(Kiss & suffocate with your embrace<br>Dr. Mannyaa approved.</p>
+    <p>See you on Valentine's Day!<br>Dr. Mannyaa approved<br><br>(Request- Pls Kiss & suffocate me with your embrace when we meet).</p>
     <button id="whatsappBtn">Reply on WhatsApp 💬</button>
   </div>
 
