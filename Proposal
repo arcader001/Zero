@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Patient Case — Special Proposal</title>
+<style>
+  :root{
+    --bg:#fdeef4;
+    --card:#fff4f6;
+    --accent:#f18297;
+    --accent-2:#ff9aa6;
+    --muted:#b89aa6;
+    --text:#1b1b1b;
+    --radius:18px;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#fff);color:var(--text);}
+  .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:28px;}
+  .card{
+    width:900px; max-width:98%; background:var(--card); border-radius:var(--radius);
+    box-shadow: 0 20px 40px rgba(210,160,170,0.18); padding:28px;
+    transition:transform .35s ease, opacity .25s ease;
+  }
+  h1{font-size:32px;margin:0 0 10px 0;letter-spacing:-0.5px;}
+  .sub{display:inline-block;background:#fff0f2;color:var(--muted);padding:6px 12px;border-radius:16px;margin-bottom:12px;font-size:13px;}
+  p.lead{font-size:18px;line-height:1.45;color:#382d33;margin:12px 0 20px;}
+  .btn-row{display:flex;gap:12px;align-items:center;margin-top:18px;}
+  .btn{
+    flex:0 0 auto;padding:14px 20px;border-radius:14px;border:0;cursor:pointer;font-weight:600;
+    box-shadow:0 6px 0 rgba(0,0,0,0.05);transition:transform .12s ease;
+    background:linear-gradient(180deg,var(--accent),var(--accent-2)); color:#fff;
+  }
+  .btn.secondary{background:#fff;border:2px solid #f4c6cf;color:var(--accent);font-weight:700;}
+  .hidden{display:none;}
+  .content-row{display:flex;gap:18px;}
+  .left{flex:1}
+  .right{flex:1;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center}
+  ul.sym{padding-left:18px;margin:10px 0;}
+  .big-btn{width:100%;padding:18px;border-radius:18px;font-size:18px}
+  .small-muted{color:var(--muted);font-size:14px}
+  .center{display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .result-img{width:160px;height:160px;border-radius:12px;background:linear-gradient(180deg,#fff,#ffeef4);display:flex;align-items:center;justify-content:center;font-size:48px;color:#ff8a9b}
+  .card-footer{margin-top:18px;display:flex;gap:12px;align-items:center}
+  .screen-fade{opacity:0;transform:translateY(10px);pointer-events:none}
+  .active{opacity:1;transform:none;pointer-events:auto}
+  /* mobile adjustments */
+  @media (max-width:640px){
+    .content-row{flex-direction:column}
+    h1{font-size:24px}
+    .btn{padding:12px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card" id="screen-1">
+    <span class="sub">Confidential</span>
+    <h1>Patient Case File</h1>
+    <p class="lead">Patient: <strong>One (1) very lucky boyfriend</strong><br>Attending: Shweta Sarthy</p>
+    <div style="height:6px"></div>
+    <div class="btn-row">
+      <button class="btn big-btn" id="openCase">Open Case ❤️</button>
+    </div>
+  </div>
+
+  <!-- Screen 2 -->
+  <div class="card screen-fade" id="screen-2" style="margin-left:12px">
+    <span class="sub">Ongoing</span>
+    <h1>Chief Complaint</h1>
+    <p class="lead">Persistent warmth in the chest area when thinking about one incredibly intelligent, kind, and beautiful future doctor.</p>
+    <div class="btn-row">
+      <button class="btn big-btn" id="reviewSymptoms">Review Symptoms</button>
+    </div>
+  </div>
+
+  <!-- Screen 3 -->
+  <div class="card screen-fade" id="screen-3">
+    <span class="sub">Well Documented</span>
+    <h1>Symptoms</h1>
+    <ul class="sym">
+      <li>Smiling for no reason</li>
+      <li>Feeling calm just by hearing your voice</li>
+      <li>Wanting to share every good moment with you</li>
+      <li>Complete certainty that you're my favorite person</li>
+    </ul>
+    <div class="btn-row">
+      <button class="btn big-btn" id="toAssessment">Assessment</button>
+    </div>
+  </div>
+
+  <!-- Screen 4 -->
+  <div class="card screen-fade" id="screen-4">
+    <span class="sub">Stable</span>
+    <h1>Assessment</h1>
+    <p class="lead">Condition appears chronic and irreversible. Patient reports feeling safe, supported, and genuinely happy in your presence.</p>
+    <div class="btn-row">
+      <button class="btn big-btn" id="finalRecommendation">Final Recommendation</button>
+    </div>
+  </div>
+
+  <!-- Screen 5 -->
+  <div class="card screen-fade" id="screen-5">
+    <span class="sub">High Priority</span>
+    <h1>Final Recommendation</h1>
+    <p class="lead">Proceed with Valentine's Day together.<br>Laugh a lot.<br>Eat something good with patient.</p>
+    <p style="font-weight:800">Will you be Patient's Valentine?</p>
+    <div class="btn-row">
+      <button class="btn big-btn" id="accept">Accept 💌</button>
+      <button class="btn secondary big-btn" id="reject">Reject ❌</button>
+    </div>
+  </div>
+
+  <!-- Screen 6: Reject "forbidden" -->
+  <div class="card screen-fade" id="screen-6">
+    <h1>Error 404: Option Not Found</h1>
+    <p class="small-muted">Action Forbidden</p>
+    <p class="lead">Wait! Your medical license doesn't cover rejection of this specific patient.<br>Look how sad he'll be:</p>
+    <div style="display:flex;gap:12px;margin-top:12px">
+      <div class="result-img">👶</div>
+      <div class="result-img">🐱</div>
+    </div>
+    <p class="small-muted" style="margin-top:12px">Please reconsider the correct medical procedure.</p>
+    <div class="btn-row">
+      <button class="btn big-btn" id="forceAccept">Accept Anyway ❤️</button>
+    </div>
+  </div>
+
+  <!-- Screen 7: Case Closed -->
+  <div class="card screen-fade" id="screen-7">
+    <h1>Case Closed</h1>
+    <p class="small-muted">Approved</p>
+    <p class="lead">Recommendation accepted.<br>Prognosis: Extremely good.<br>Thank you, Doctor ❤️</p>
+    <div class="card-footer">
+      <a id="shareWhats" class="btn secondary" style="text-decoration:none">Share on WhatsApp</a>
+      <a id="shareMail" class="btn secondary" style="text-decoration:none">Send by Email</a>
+    </div>
+    <div style="height:8px"></div>
+    <div class="small-muted">Tip: On Android, tap the WhatsApp button to open share dialog.</div>
+  </div>
+</div>
+
+<script>
+  // small helper
+  const show = (id)=>{ document.querySelectorAll('.card').forEach(c=>c.classList.add('screen-fade')); document.getElementById(id).classList.remove('screen-fade'); document.getElementById(id).classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+  // initialize: only screen-1 visible
+  document.querySelectorAll('.card').forEach((c,i)=>{ if (i!==0){c.classList.add('screen-fade')} else {c.classList.add('active')} });
+
+  document.getElementById('openCase').addEventListener('click',()=> show('screen-2'));
+  document.getElementById('reviewSymptoms').addEventListener('click',()=> show('screen-3'));
+  document.getElementById('toAssessment').addEventListener('click',()=> show('screen-4'));
+  document.getElementById('finalRecommendation').addEventListener('click',()=> show('screen-5'));
+
+  document.getElementById('accept').addEventListener('click',()=> show('screen-7'));
+  document.getElementById('reject').addEventListener('click',()=> show('screen-6'));
+  document.getElementById('forceAccept').addEventListener('click',()=> show('screen-7'));
+
+  // Share links (customize message)
+  const title = encodeURIComponent("Will you be my Valentine?");
+  const body = encodeURIComponent("They accepted the case! 💖\nProceed with Valentine's Day together — laugh a lot and eat something good together.\n\n(From: Your secret admirer)");
+  const waLink = "https://api.whatsapp.com/send?text=" + encodeURIComponent("I have a special message for you:\n\nWill you be my Valentine? ❤️\n\nOpen this link (if you can't open it here, I'll send it directly):\n\n");
+  // when hosted, we will append the page URL to the message
+  const mailLink = "mailto:?subject=" + title + "&body=" + body;
+
+  const setLinks = ()=> {
+    const pageUrl = encodeURIComponent(location.href);
+    document.getElementById('shareWhats').href = waLink + pageUrl;
+    document.getElementById('shareMail').href = mailLink + "%0A%0A" + pageUrl;
+  };
+  // set links initially and on load
+  setLinks();
+  window.addEventListener('hashchange', setLinks);
+  window.addEventListener('load', setLinks);
+</script>
+</body>
+</html>
