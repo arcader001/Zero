@@ -12,165 +12,148 @@
     --accent-2:#ff9aa6;
     --muted:#b89aa6;
     --text:#1b1b1b;
-    --radius:18px;
-    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    --radius:24px;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
   html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#fff);color:var(--text);}
-  .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:28px;}
+  .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:20px;}
+  
+  /* Card Styles */
   .card{
-    width:900px; max-width:98%; background:var(--card); border-radius:var(--radius);
-    box-shadow: 0 20px 40px rgba(210,160,170,0.18); padding:28px;
-    transition:transform .35s ease, opacity .25s ease;
+    width:100%; max-width:400px; 
+    background:var(--card); 
+    border-radius:var(--radius);
+    box-shadow: 0 20px 40px rgba(210,160,170,0.15); 
+    padding:32px 24px;
+    text-align:center;
+    display:none; /* Hidden by default */
+    animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  h1{font-size:32px;margin:0 0 10px 0;letter-spacing:-0.5px;}
-  .sub{display:inline-block;background:#fff0f2;color:var(--muted);padding:6px 12px;border-radius:16px;margin-bottom:12px;font-size:13px;}
-  p.lead{font-size:18px;line-height:1.45;color:#382d33;margin:12px 0 20px;}
-  .btn-row{display:flex;gap:12px;align-items:center;margin-top:18px;}
+  .card.active{ display:block; }
+  
+  /* Typography & Elements */
+  h1{font-size:28px;margin:15px 0 10px;letter-spacing:-0.5px;color:#d6334f;}
+  .sub{display:inline-block;background:#fff;border:1px solid #fcecee;color:var(--muted);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+  p.lead{font-size:17px;line-height:1.5;color:#5c4851;margin:15px 0 25px;}
+  strong{color:#d6334f;}
+  
+  /* Buttons */
+  .btn-row{display:flex;flex-direction:column;gap:12px;margin-top:20px;}
   .btn{
-    flex:0 0 auto;padding:14px 20px;border-radius:14px;border:0;cursor:pointer;font-weight:600;
-    box-shadow:0 6px 0 rgba(0,0,0,0.05);transition:transform .12s ease;
-    background:linear-gradient(180deg,var(--accent),var(--accent-2)); color:#fff;
+    width:100%; padding:16px; border-radius:16px; border:0; cursor:pointer; font-weight:700; font-size:17px;
+    box-shadow:0 8px 20px rgba(241,130,151,0.3);
+    background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff;
+    transition:transform .1s ease;
   }
-  .btn.secondary{background:#fff;border:2px solid #f4c6cf;color:var(--accent);font-weight:700;}
-  .hidden{display:none;}
-  .content-row{display:flex;gap:18px;}
-  .left{flex:1}
-  .right{flex:1;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center}
-  ul.sym{padding-left:18px;margin:10px 0;}
-  .big-btn{width:100%;padding:18px;border-radius:18px;font-size:18px}
-  .small-muted{color:var(--muted);font-size:14px}
-  .center{display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .result-img{width:160px;height:160px;border-radius:12px;background:linear-gradient(180deg,#fff,#ffeef4);display:flex;align-items:center;justify-content:center;font-size:48px;color:#ff8a9b}
-  .card-footer{margin-top:18px;display:flex;gap:12px;align-items:center}
-  .screen-fade{opacity:0;transform:translateY(10px);pointer-events:none}
-  .active{opacity:1;transform:none;pointer-events:auto}
-  /* mobile adjustments */
-  @media (max-width:640px){
-    .content-row{flex-direction:column}
-    h1{font-size:24px}
-    .btn{padding:12px}
+  .btn:active{transform:scale(0.98);}
+  .btn.secondary{background:#fff;border:2px solid #ffdae0;color:var(--accent);box-shadow:none;}
+  
+  /* Lists & Extras */
+  ul.sym{text-align:left;padding-left:20px;margin:0 auto;max-width:300px;color:#5c4851;}
+  li{margin-bottom:8px;}
+  .result-img{font-size:50px; margin:10px;}
+  .emoji-row{display:flex;justify-content:center;gap:15px;}
+  
+  /* Animation */
+  @keyframes fadeIn {
+    0% { opacity:0; transform:translateY(20px) scale(0.95); }
+    100% { opacity:1; transform:translateY(0) scale(1); }
   }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="card" id="screen-1">
+
+  <div class="card active" id="screen-1">
     <span class="sub">Confidential</span>
     <h1>Patient Case File</h1>
-    <p class="lead">Patient: <strong>One (1) very lucky boyfriend</strong><br>Attending: Shweta Sarthy</p>
-    <div style="height:6px"></div>
+    <p class="lead">Patient: <strong>One (1) very lucky boyfriend</strong><br>Attending: <strong>Dr. Shweta Sarthy</strong></p>
     <div class="btn-row">
-      <button class="btn big-btn" id="openCase">Open Case ❤️</button>
+      <button class="btn" onclick="next('screen-2')">Open Case 📂</button>
     </div>
   </div>
 
-  <!-- Screen 2 -->
-  <div class="card screen-fade" id="screen-2" style="margin-left:12px">
-    <span class="sub">Ongoing</span>
+  <div class="card" id="screen-2">
+    <span class="sub">Ongoing Issue</span>
     <h1>Chief Complaint</h1>
-    <p class="lead">Persistent warmth in the chest area when thinking about one incredibly intelligent, kind, and beautiful future doctor.</p>
+    <p class="lead">"I feel a persistent warmth in my chest whenever I think about this one incredibly intelligent and beautiful future doctor."</p>
     <div class="btn-row">
-      <button class="btn big-btn" id="reviewSymptoms">Review Symptoms</button>
+      <button class="btn" onclick="next('screen-3')">Review Symptoms 🩺</button>
     </div>
   </div>
 
-  <!-- Screen 3 -->
-  <div class="card screen-fade" id="screen-3">
-    <span class="sub">Well Documented</span>
+  <div class="card" id="screen-3">
+    <span class="sub">Observations</span>
     <h1>Symptoms</h1>
     <ul class="sym">
-      <li>Smiling for no reason</li>
-      <li>Feeling calm just by hearing your voice</li>
-      <li>Wanting to share every good moment with you</li>
-      <li>Complete certainty that you're my favorite person</li>
+      <li>Smiling at phone for no reason</li>
+      <li>Immediate calm upon hearing your voice</li>
+      <li>Urge to share every small moment with you</li>
+      <li>Diagnosis: You are his favorite person</li>
     </ul>
     <div class="btn-row">
-      <button class="btn big-btn" id="toAssessment">Assessment</button>
+      <button class="btn" onclick="next('screen-4')">See Assessment 📋</button>
     </div>
   </div>
 
-  <!-- Screen 4 -->
-  <div class="card screen-fade" id="screen-4">
-    <span class="sub">Stable</span>
+  <div class="card" id="screen-4">
+    <span class="sub">Stable Condition</span>
     <h1>Assessment</h1>
     <p class="lead">Condition appears chronic and irreversible. Patient reports feeling safe, supported, and genuinely happy in your presence.</p>
     <div class="btn-row">
-      <button class="btn big-btn" id="finalRecommendation">Final Recommendation</button>
+      <button class="btn" onclick="next('screen-5')">Final Recommendation 💊</button>
     </div>
   </div>
 
-  <!-- Screen 5 -->
-  <div class="card screen-fade" id="screen-5">
+  <div class="card" id="screen-5">
     <span class="sub">High Priority</span>
-    <h1>Final Recommendation</h1>
-    <p class="lead">Proceed with Valentine's Day together.<br>Laugh a lot.<br>Eat something good with patient.</p>
-    <p style="font-weight:800">Will you be Patient's Valentine?</p>
+    <h1>Prescription</h1>
+    <p class="lead"><strong>1.</strong> Proceed with Valentine's Day together.<br><strong>2.</strong> Laugh a lot.<br><strong>3.</strong> Eat good food.</p>
+    <p style="font-weight:700;color:#d6334f;font-size:18px">Will you be the Patient's Valentine?</p>
     <div class="btn-row">
-      <button class="btn big-btn" id="accept">Accept 💌</button>
-      <button class="btn secondary big-btn" id="reject">Reject ❌</button>
+      <button class="btn" onclick="next('screen-7')">Accept Proposal 💌</button>
+      <button class="btn secondary" onclick="next('screen-6')">Reject ❌</button>
     </div>
   </div>
 
-  <!-- Screen 6: Reject "forbidden" -->
-  <div class="card screen-fade" id="screen-6">
-    <h1>Error 404: Option Not Found</h1>
-    <p class="small-muted">Action Forbidden</p>
-    <p class="lead">Wait! Your medical license doesn't cover rejection of this specific patient.<br>Look how sad he'll be:</p>
-    <div style="display:flex;gap:12px;margin-top:12px">
-      <div class="result-img">👶</div>
-      <div class="result-img">🐱</div>
+  <div class="card" id="screen-6">
+    <h1>Error 404</h1>
+    <span class="sub" style="background:#fee;color:red;border-color:red">Action Forbidden</span>
+    <p class="lead">Wait! Your medical license doesn't cover breaking this patient's heart. Look how sad he is:</p>
+    <div class="emoji-row">
+      <div class="result-img">🥺</div>
+      <div class="result-img">💔</div>
     </div>
-    <p class="small-muted" style="margin-top:12px">Please reconsider the correct medical procedure.</p>
+    <p class="lead" style="font-size:14px">Please reconsider the correct medical procedure.</p>
     <div class="btn-row">
-      <button class="btn big-btn" id="forceAccept">Accept Anyway ❤️</button>
+      <button class="btn" onclick="next('screen-7')">Okay, Accept Anyway 💖</button>
     </div>
   </div>
 
-  <!-- Screen 7: Case Closed -->
-  <div class="card screen-fade" id="screen-7">
-    <h1>Case Closed</h1>
-    <p class="small-muted">Approved</p>
-    <p class="lead">Recommendation accepted.<br>Prognosis: Extremely good.<br>Thank you, Doctor ❤️</p>
-    <div class="card-footer">
-      <a id="shareWhats" class="btn secondary" style="text-decoration:none">Share on WhatsApp</a>
-      <a id="shareMail" class="btn secondary" style="text-decoration:none">Send by Email</a>
+  <div class="card" id="screen-7">
+    <span class="sub" style="color:green;border-color:green">Approved</span>
+    <h1>Case Closed!</h1>
+    <div class="result-img">🎉</div>
+    <p class="lead">Recommendation accepted.<br>Prognosis: <strong>Extremely good.</strong><br>Thank you, Doctor.</p>
+    <div class="btn-row">
+      <a id="shareWhats" class="btn secondary" style="text-decoration:none">Reply on WhatsApp 💬</a>
     </div>
-    <div style="height:8px"></div>
-    <div class="small-muted">Tip: On Android, tap the WhatsApp button to open share dialog.</div>
   </div>
+
 </div>
 
 <script>
-  // small helper
-  const show = (id)=>{ document.querySelectorAll('.card').forEach(c=>c.classList.add('screen-fade')); document.getElementById(id).classList.remove('screen-fade'); document.getElementById(id).classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
-  // initialize: only screen-1 visible
-  document.querySelectorAll('.card').forEach((c,i)=>{ if (i!==0){c.classList.add('screen-fade')} else {c.classList.add('active')} });
+  // Simple navigation function
+  function next(id) {
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
 
-  document.getElementById('openCase').addEventListener('click',()=> show('screen-2'));
-  document.getElementById('reviewSymptoms').addEventListener('click',()=> show('screen-3'));
-  document.getElementById('toAssessment').addEventListener('click',()=> show('screen-4'));
-  document.getElementById('finalRecommendation').addEventListener('click',()=> show('screen-5'));
-
-  document.getElementById('accept').addEventListener('click',()=> show('screen-7'));
-  document.getElementById('reject').addEventListener('click',()=> show('screen-6'));
-  document.getElementById('forceAccept').addEventListener('click',()=> show('screen-7'));
-
-  // Share links (customize message)
-  const title = encodeURIComponent("Will you be my Valentine?");
-  const body = encodeURIComponent("They accepted the case! 💖\nProceed with Valentine's Day together — laugh a lot and eat something good together.\n\n(From: Your secret admirer)");
-  const waLink = "https://api.whatsapp.com/send?text=" + encodeURIComponent("I have a special message for you:\n\nWill you be my Valentine? ❤️\n\nOpen this link (if you can't open it here, I'll send it directly):\n\n");
-  // when hosted, we will append the page URL to the message
-  const mailLink = "mailto:?subject=" + title + "&body=" + body;
-
-  const setLinks = ()=> {
-    const pageUrl = encodeURIComponent(location.href);
-    document.getElementById('shareWhats').href = waLink + pageUrl;
-    document.getElementById('shareMail').href = mailLink + "%0A%0A" + pageUrl;
-  };
-  // set links initially and on load
-  setLinks();
-  window.addEventListener('hashchange', setLinks);
-  window.addEventListener('load', setLinks);
+  // Dynamic WhatsApp Link
+  const phone = ""; // OPTIONAL: Enter her number like "919999999999" to auto-open chat
+  const text = "I've reviewed the case file... and I accept the diagnosis! 💖 See you on Valentine's Day!";
+  const link = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+  document.getElementById('shareWhats').href = link;
 </script>
 </body>
 </html>
