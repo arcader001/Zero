@@ -2,158 +2,145 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Patient Case — Special Proposal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Patient Case File</title>
 <style>
-  :root{
-    --bg:#fdeef4;
-    --card:#fff4f6;
-    --accent:#f18297;
-    --accent-2:#ff9aa6;
-    --muted:#b89aa6;
-    --text:#1b1b1b;
-    --radius:24px;
-    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* 1. Basic Setup */
+  :root {
+    --bg: #fdeef4;
+    --card-bg: #fff4f6;
+    --primary: #f18297;
+    --primary-dark: #d6334f;
+    --text: #1b1b1b;
   }
-  html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#fff);color:var(--text);}
-  .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:20px;}
-  
-  /* Card Styles */
-  .card{
-    width:100%; max-width:400px; 
-    background:var(--card); 
-    border-radius:var(--radius);
-    box-shadow: 0 20px 40px rgba(210,160,170,0.15); 
-    padding:32px 24px;
-    text-align:center;
-    display:none; /* Hidden by default */
-    animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(180deg, var(--bg), #fff);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Prevents scrolling away from card */
   }
-  .card.active{ display:block; }
-  
-  /* Typography & Elements */
-  h1{font-size:28px;margin:15px 0 10px;letter-spacing:-0.5px;color:#d6334f;}
-  .sub{display:inline-block;background:#fff;border:1px solid #fcecee;color:var(--muted);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
-  p.lead{font-size:17px;line-height:1.5;color:#5c4851;margin:15px 0 25px;}
-  strong{color:#d6334f;}
-  
-  /* Buttons */
-  .btn-row{display:flex;flex-direction:column;gap:12px;margin-top:20px;}
-  .btn{
-    width:100%; padding:16px; border-radius:16px; border:0; cursor:pointer; font-weight:700; font-size:17px;
-    box-shadow:0 8px 20px rgba(241,130,151,0.3);
-    background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff;
-    transition:transform .1s ease;
+
+  /* 2. The Card Logic - This fixes the blank screen */
+  .card {
+    background: var(--card-bg);
+    width: 90%;
+    max-width: 400px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(241, 130, 151, 0.2);
+    text-align: center;
+    /* HIDDEN BY DEFAULT */
+    display: none; 
   }
-  .btn:active{transform:scale(0.98);}
-  .btn.secondary{background:#fff;border:2px solid #ffdae0;color:var(--accent);box-shadow:none;}
-  
-  /* Lists & Extras */
-  ul.sym{text-align:left;padding-left:20px;margin:0 auto;max-width:300px;color:#5c4851;}
-  li{margin-bottom:8px;}
-  .result-img{font-size:50px; margin:10px;}
-  .emoji-row{display:flex;justify-content:center;gap:15px;}
-  
-  /* Animation */
-  @keyframes fadeIn {
-    0% { opacity:0; transform:translateY(20px) scale(0.95); }
-    100% { opacity:1; transform:translateY(0) scale(1); }
+
+  /* Only the active card is shown */
+  .card.active {
+    display: block;
+    animation: popIn 0.5s ease;
   }
+
+  @keyframes popIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* 3. Text & Buttons */
+  h1 { margin: 0 0 15px; color: var(--primary-dark); font-size: 26px; }
+  p { font-size: 18px; color: #5c4851; line-height: 1.5; margin-bottom: 25px; }
+  .badge { background: #fff; border: 1px solid #fcecee; padding: 5px 12px; border-radius: 15px; font-size: 12px; color: var(--primary); font-weight: bold; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+  
+  button {
+    background: linear-gradient(135deg, var(--primary), #ff9aa6);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(241, 130, 151, 0.4);
+    transition: transform 0.2s;
+  }
+  button:active { transform: scale(0.98); }
+  button.secondary { background: #fff; border: 2px solid #ffdae0; color: var(--primary); box-shadow: none; margin-top: 10px; }
+  
+  ul { text-align: left; color: #5c4851; padding-left: 20px; }
+  li { margin-bottom: 8px; }
+  .emoji-big { font-size: 40px; margin: 10px; }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <div class="card active" id="screen-1">
-    <span class="sub">Confidential</span>
+  <div class="card active" id="s1">
+    <span class="badge">Confidential</span>
     <h1>Patient Case File</h1>
-    <p class="lead">Patient: <strong>One (1) very lucky boyfriend</strong><br>Attending: <strong>Dr. Shweta Sarthy</strong></p>
-    <div class="btn-row">
-      <button class="btn" onclick="next('screen-2')">Open Case 📂</button>
-    </div>
+    <p><strong>Patient:</strong> One (1) very lucky guy<br><strong>Attending:</strong> Dr. Shweta Sarthy</p>
+    <button onclick="next('s2')">Open Case 📂</button>
   </div>
 
-  <div class="card" id="screen-2">
-    <span class="sub">Ongoing Issue</span>
-    <h1>Chief Complaint</h1>
-    <p class="lead">"I feel a persistent warmth in my chest whenever I think about this one incredibly intelligent and beautiful future doctor."</p>
-    <div class="btn-row">
-      <button class="btn" onclick="next('screen-3')">Review Symptoms 🩺</button>
-    </div>
-  </div>
-
-  <div class="card" id="screen-3">
-    <span class="sub">Observations</span>
+  <div class="card" id="s2">
+    <span class="badge">Chief Complaint</span>
     <h1>Symptoms</h1>
-    <ul class="sym">
-      <li>Smiling at phone for no reason</li>
-      <li>Immediate calm upon hearing your voice</li>
-      <li>Urge to share every small moment with you</li>
-      <li>Diagnosis: You are his favorite person</li>
+    <p>Patient reports "persistent warmth in chest" and "smiling for no reason" whenever he thinks of you.</p>
+    <button onclick="next('s3')">Check Diagnosis 🩺</button>
+  </div>
+
+  <div class="card" id="s3">
+    <span class="badge">Assessment</span>
+    <h1>Diagnosis</h1>
+    <ul>
+      <li>Condition is chronic ❤️</li>
+      <li>Patient feels safe with you</li>
+      <li>Highly contagious happiness</li>
     </ul>
-    <div class="btn-row">
-      <button class="btn" onclick="next('screen-4')">See Assessment 📋</button>
-    </div>
+    <button onclick="next('s4')">See Prescription 💊</button>
   </div>
 
-  <div class="card" id="screen-4">
-    <span class="sub">Stable Condition</span>
-    <h1>Assessment</h1>
-    <p class="lead">Condition appears chronic and irreversible. Patient reports feeling safe, supported, and genuinely happy in your presence.</p>
-    <div class="btn-row">
-      <button class="btn" onclick="next('screen-5')">Final Recommendation 💊</button>
-    </div>
-  </div>
-
-  <div class="card" id="screen-5">
-    <span class="sub">High Priority</span>
+  <div class="card" id="s4">
+    <span class="badge">Treatment Plan</span>
     <h1>Prescription</h1>
-    <p class="lead"><strong>1.</strong> Proceed with Valentine's Day together.<br><strong>2.</strong> Laugh a lot.<br><strong>3.</strong> Eat good food.</p>
-    <p style="font-weight:700;color:#d6334f;font-size:18px">Will you be the Patient's Valentine?</p>
-    <div class="btn-row">
-      <button class="btn" onclick="next('screen-7')">Accept Proposal 💌</button>
-      <button class="btn secondary" onclick="next('screen-6')">Reject ❌</button>
-    </div>
+    <p>1. Proceed with Valentine's Day.<br>2. Eat good food.<br>3. Laugh a lot.</p>
+    <p style="color:#d6334f; font-weight:bold;">Will you be my Valentine?</p>
+    <button onclick="next('s6')">Yes, Accept! 💌</button>
+    <button class="secondary" onclick="next('s5')">No (Reject) ❌</button>
   </div>
 
-  <div class="card" id="screen-6">
+  <div class="card" id="s5">
     <h1>Error 404</h1>
-    <span class="sub" style="background:#fee;color:red;border-color:red">Action Forbidden</span>
-    <p class="lead">Wait! Your medical license doesn't cover breaking this patient's heart. Look how sad he is:</p>
-    <div class="emoji-row">
-      <div class="result-img">🥺</div>
-      <div class="result-img">💔</div>
-    </div>
-    <p class="lead" style="font-size:14px">Please reconsider the correct medical procedure.</p>
-    <div class="btn-row">
-      <button class="btn" onclick="next('screen-7')">Okay, Accept Anyway 💖</button>
-    </div>
+    <p>Action Forbidden. Look how sad he is:</p>
+    <div class="emoji-big">🥺 💔</div>
+    <button onclick="next('s6')">Okay, Accept Anyway 💖</button>
   </div>
 
-  <div class="card" id="screen-7">
-    <span class="sub" style="color:green;border-color:green">Approved</span>
+  <div class="card" id="s6">
+    <span class="badge" style="color:green; border-color:green;">Success</span>
     <h1>Case Closed!</h1>
-    <div class="result-img">🎉</div>
-    <p class="lead">Recommendation accepted.<br>Prognosis: <strong>Extremely good.</strong><br>Thank you, Doctor.</p>
-    <div class="btn-row">
-      <a id="shareWhats" class="btn secondary" style="text-decoration:none">Reply on WhatsApp 💬</a>
-    </div>
+    <div class="emoji-big">🎉</div>
+    <p>See you on Valentine's Day!<br>Dr. Shweta approved.</p>
+    <button id="whatsappBtn">Reply on WhatsApp 💬</button>
   </div>
-
-</div>
 
 <script>
-  // Simple navigation function
   function next(id) {
-    document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+    // Hide all cards
+    document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
+    // Show the requested card
     document.getElementById(id).classList.add('active');
   }
 
-  // Dynamic WhatsApp Link
-  const phone = ""; // OPTIONAL: Enter her number like "919999999999" to auto-open chat
-  const text = "I've reviewed the case file... and I accept the diagnosis! 💖 See you on Valentine's Day!";
-  const link = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-  document.getElementById('shareWhats').href = link;
+  // Setup WhatsApp Link
+  const phone = ""; // Add number if you want: "9199999999"
+  const text = "I reviewed the case file... and I accept! 💖 See you on Valentine's Day!";
+  document.getElementById('whatsappBtn').onclick = function() {
+    window.location.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
+  };
 </script>
+
 </body>
 </html>
